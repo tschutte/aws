@@ -19,7 +19,7 @@
 
 
 $program_version = "1.75";
-$ec2_version = "2010-11-15";
+$ec2_version = "2012-03-01";
 $sqs_version = "2009-02-01";
 $elb_version = "2010-07-01";
 $sdb_version = "2009-04-15";
@@ -49,7 +49,9 @@ $iam_version = "2010-05-08";
 	["ec2", "allocate-address allad", AllocateAddress],
 	["ec2", "associate-address aad", AssociateAddress, [
 								["", PublicIp],
+								["a", AllocationId],
 								["i", InstanceId],
+								["n", NetworkInterfaceId],
 								]],
 	["ec2", "attach-volume attvol", AttachVolume, [
 						       ["", VolumeId],
@@ -156,7 +158,10 @@ $iam_version = "2010-05-08";
 								]],
 	["ec2", "describe-volumes dvol", DescribeVolumes, [["", VolumeIdN]]],
 	["ec2", "detach-volume detvol", DetachVolume, [["", VolumeId]]],
-	["ec2", "disassociate-address disad", DisassociateAddress, [["", PublicIp]]],
+	["ec2", "disassociate-address disad", DisassociateAddress, [
+		                                                    ["", PublicIp],
+	                                                            ["a", AssociationId],
+	                                                           ]],
 	["ec2", "get-console-output gco", GetConsoleOutput, [["", InstanceId]]],
 	["ec2", "purchase-reserved-instance-offering", PurchaseReservedInstancesOffering, [
 											  ["offering-id", ReservedInstancesOfferingId],
